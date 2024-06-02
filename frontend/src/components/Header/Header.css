@@ -1,0 +1,149 @@
+.header {
+    height: 45vw;
+    margin: 30px auto;
+    background: url('/header_img.png') no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 20px;
+}
+
+.header-contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+    animation: fadeIn 3s;
+}
+
+.header-contents h2 {
+    font-weight: 500;
+    color: black;
+    font-size: max(4.5vw, 22px);
+}
+
+.header-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    flex-wrap: wrap; /* This allows the items to wrap when necessary */
+}
+
+.address-input {
+    padding: 1vw;
+    font-size: 1vw;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 30vw;
+    min-width: 200px; /* Ensure the input has a minimum width */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    padding: 1vw;
+    font-size: 1vw;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 1vw;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.header-contents p {
+    color: white;
+    font-size: 1vw;
+}
+
+.header-contents button {
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background: black;
+    font-size: max(1vw, 13px);
+    border-radius: 50px;
+}
+
+@media (max-width: 1050px) {
+    .header {
+        height: 38vw;
+    }
+
+    .header-contents {
+        max-width: 45%;
+    }
+
+    .header-input-group {
+        flex-direction: row;
+        gap: 1vw;
+        width: 100%;
+    }
+
+    .address-input,
+    .dropbtn {
+        width: auto;
+        flex: 1 1 auto; /* Allow flexibility in width */
+        font-size: 14px;
+        padding: 0.8vw;
+    }
+}
+
+@media (max-width: 650px) {
+    .header-contents {
+        max-width: 55%;
+    }
+
+    .header-contents p {
+        display: none;
+    }
+
+    .header-contents button {
+        padding: 2vw 4vw;
+    }
+
+    .header-input-group {
+        flex-direction: column;
+        gap: 0.5vw;
+        width: 100%;
+    }
+
+    .address-input,
+    .dropbtn {
+        width: 100%;
+        font-size: 12px;
+        padding: 1vw;
+    }
+}
