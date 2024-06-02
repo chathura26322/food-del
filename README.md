@@ -1,2 +1,2 @@
 # food-del
-the full front end and backend of the food-del web project
+The full frontend and backend of the food-del web project
