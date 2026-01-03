@@ -109,7 +109,7 @@ const Add = () => {
               name="price"
               onChange={onChangeHandler}
               value={data.price}
-              placeholder="Rs 25"
+              placeholder="Rs 100"
             />
           </div>
         </div>
