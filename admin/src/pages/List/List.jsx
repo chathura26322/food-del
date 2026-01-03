@@ -113,7 +113,7 @@ const List = () => {
                 <img src={`${url}/images/`+item.image} alt="" />
                 <p>{item.name}</p>
                 <p>{item.category}</p>
-                <p>${item.price}</p>
+                <p>Rs {item.price}</p>
                 <div className='list-actions'>
                   <button className='edit-btn' onClick={() => openEditModal(item)} title='Edit'>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
