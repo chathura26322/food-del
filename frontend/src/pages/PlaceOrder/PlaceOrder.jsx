@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './PlaceOrder.css'
 import { StoreContext } from '../../Context/StoreContext'
-import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -20,7 +19,7 @@ const PlaceOrder = () => {
         phone: ""
     })
 
-    const { getTotalCartAmount, token, food_list, cartItems, url, setCartItems } = useContext(StoreContext);
+    const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
 
     const navigate = useNavigate();
 
@@ -33,17 +32,17 @@ const PlaceOrder = () => {
     const placeOrder = async (e) => {
         e.preventDefault()
         let orderItems = [];
-        food_list.map(((item) => {
+        food_list.forEach((item) => {
             if (cartItems[item._id] > 0) {
                 let itemInfo = item;
                 itemInfo["quantity"] = cartItems[item._id];
                 orderItems.push(itemInfo)
             }
-        }))
+        })
         let orderData = {
             address: data,
             items: orderItems,
-            amount: getTotalCartAmount() + 5,
+            amount: getTotalCartAmount() + 250,
         }
         let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
         if (response.data.success) {
@@ -63,6 +62,7 @@ const PlaceOrder = () => {
         else if (getTotalCartAmount() === 0) {
             navigate('/cart')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
 
     return (
@@ -89,11 +89,11 @@ const PlaceOrder = () => {
                 <div className="cart-total">
                     <h2>Cart Totals</h2>
                     <div>
-                        <div className="cart-total-details"><p>Subtotal</p><p>${getTotalCartAmount()}</p></div>
+                        <div className="cart-total-details"><p>Subtotal</p><p>Rs {getTotalCartAmount()}</p></div>
                         <hr />
-                        <div className="cart-total-details"><p>Delivery Fee</p><p>${getTotalCartAmount() === 0 ? 0 : 5}</p></div>
+                        <div className="cart-total-details"><p>Delivery Fee</p><p>Rs {getTotalCartAmount() === 0 ? 0 : 250}</p></div>
                         <hr />
-                        <div className="cart-total-details"><b>Total</b><b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 5}</b></div>
+                        <div className="cart-total-details"><b>Total</b><b>Rs {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 250}</b></div>
                     </div>
                 </div>
                 <button className='place-order-submit' type='submit'>Proceed To Payment</button>

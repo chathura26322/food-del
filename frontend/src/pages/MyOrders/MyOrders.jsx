@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './MyOrders.css'
 import axios from 'axios'
 import { StoreContext } from '../../Context/StoreContext';
@@ -18,6 +18,7 @@ const MyOrders = () => {
     if (token) {
       fetchOrders();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[token])
 
   return (
@@ -37,7 +38,7 @@ const MyOrders = () => {
                   }
                   
                 })}</p>
-                <p>${order.amount}.00</p>
+                <p>Rs {order.amount}.00</p>
                 <p>Items: {order.items.length}</p>
                 <p><span>&#x25cf;</span> <b>{order.status}</b></p>
                 <button>Track Order</button>
